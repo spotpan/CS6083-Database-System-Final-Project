@@ -1,0 +1,21 @@
+Usersignup(uname, uloginname, upassword)
+
+Userinfo(uname, uname, uemail, uhometown, uinterests, ucreditcard)
+
+Project(pid, uname, pname, pdescription, status, tags, plannedtime)
+
+Projectattachment(pid, blob)
+
+Record(pid, uname, amount, date)
+
+Charge(pid, uname, amount)
+
+Like(pid, uname)
+
+Follow(uname, following)
+
+Comment(pid, uname, date, comment)
+
+Request(uname, pid, min, max, endtime)
+
+Rate(pid, uname, ratenumber)
