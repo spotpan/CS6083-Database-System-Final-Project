@@ -1,6 +1,6 @@
-Usersignup(uname, uloginname, upassword)
+User(uname, uloginname, upassword)
 
-Userinfo(uname, uname, uemail, uhometown, uinterests, ucreditcard)
+Userinfo(uname, uemail, uhometown, uinterests, ucreditcard)
 
 Project(pid, uname, pname, pdescription, status, tags, plannedtime)
 
