@@ -6,9 +6,9 @@ Project(pid, uname, pname, pdescription, status, tags, plannedtime)
 
 Projectattachment(pid, blob)
 
-Record(pid, uname, amount, date)
+Pledge(pid, uname, amount, date)
 
-Charge(pid, uname, amount, date)
+Charge(pid, uname, totalamount, date)
 
 Like(pid, uname)
 
