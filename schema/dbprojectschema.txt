@@ -8,7 +8,7 @@ Projectattachment(pid, blob)
 
 Record(pid, uname, amount, date)
 
-Charge(pid, uname, amount)
+Charge(pid, uname, amount, date)
 
 Like(pid, uname)
 
