@@ -14,7 +14,7 @@ Like(pid, uname)
 
 Follow(uname, following)
 
-Comment(pid, uname, date, comment)
+Comment(pid, uname, date, content)
 
 Request(uname, pid, min, max, endtime)
 
