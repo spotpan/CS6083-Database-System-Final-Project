@@ -1,6 +1,6 @@
 Usr(uname, uloginname, upassword)
 
-Userinfo(uname, uemail, uhometown, uinterests, ucreditcard)
+Usrinfo(uname, uemail, uhometown, uinterests, ucreditcard)
 
 Project(pid, uname, pname, pdescription, status, tags, plannedtime)
 
