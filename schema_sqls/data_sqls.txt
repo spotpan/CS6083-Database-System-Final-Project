@@ -37,7 +37,7 @@ INSERT INTO Follow VALUES('EmilyBeyond', 'BobInBrooklyn');
 INSERT INTO Comment VALUES(100011, 'FayetteUli', '2017-04-01 23:00:11', 'Seems a promising performance!');
 INSERT INTO Comment VALUES(100012, 'Jack2016', '2017-03-21 21:00:00', 'Basketball is so much fun!');
 INSERT INTO Comment VALUES(100013, 'BobInBrooklyn', '2017-02-10 10:00:00', 'Sweet swimming pool!');
-INSERT INTO Comment VALUES(100014, 'AlexLexington', , '2017-02-01 09:00:00', 'Hope Kaylee would get better soon.');
+INSERT INTO Comment VALUES(100014, 'AlexLexington', '2017-02-01 09:00:00', 'Hope Kaylee would get better soon.');
 INSERT INTO Comment VALUES(100015, 'EmilyBeyond', '2015-02-22 18:00:00', 'Thanks for everybody''s help!');
 
 INSERT INTO Rate VALUES(100011, 'FayetteUli', 4);
