@@ -1,63 +1,78 @@
 CREATE TABLE Usr(
-uname VARCHAR(45) PRIMARY KEY NOT NULL, 
-uloginname VARCHAR(45) UNIQUE NOT NULL,
-upassowrd VARCHAR(25) NOT NULL);
+uname VARCHAR(40) PRIMARY KEY NOT NULL, 
+uloginname VARCHAR(40) UNIQUE NOT NULL,
+upassowrd VARCHAR(40) NOT NULL);
 
 CREATE TABLE Usrinfo(
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
-uemail VARCHAR(45) UNIQUE NOT NULL,
-uhometown VARCHAR(45),
-uinterests VARCHAR(45),
-ucreditcar BIGINT);
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
+uemail VARCHAR(40) UNIQUE NOT NULL,
+uhometown VARCHAR(40),
+uinterests VARCHAR(40),
+ucreditcard BIGINT);
+
+//ucreditcard 16 length
 
 CREATE TABLE Project(
-pid BIGINT PRIMARY KEY NOT NULL,
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
-pname VARCHAR(45) NOT NULL,
+pid INT PRIMARY KEY NOT NULL,
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
+pname VARCHAR(40) NOT NULL,
 pdescrption VARCHAR(500),
-status BOOLEAN NOT NULL,
-tags VARCHAR(200) NOT NULL,
+status VARCHAR(40) NOT NULL,
+tags VARCHAR(40) NOT NULL,
+createdtime DATE NOT NULL,
 plannedtime TIMESTAMP NOT NULL);
 
+//pid 6 length
+//stutas: not-started processing completed 
+//sample DATE: '2001-10-05'
+//sample TIMESTAMP: '2001-09-28 01:00:00'
+
 CREATE TABLE Projectattachment(
-pid BIGINT REFERENCES Project(pid) NOT NULL,
-blob BYTEA NOT NULL);
+pid INT REFERENCES Project(pid) NOT NULL,
+blob BYTEA PRIMARY KEY NOT NULL);
 
 CREATE TABLE Pledge(
-pid BIGINT REFERENCES Project(pid) NOT NULL,
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
+pid INT REFERENCES Project(pid) NOT NULL,
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
 amount INT NOT NULL,
-date TIMESTAMP NOT NULL);
+date TIMESTAMP NOT NULL,
+PRIMARY KEY (pid, uname, date));
 
 CREATE TABLE Charge(
-pid BIGINT REFERENCES Project(pid) NOT NULL,
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
+pid INT REFERENCES Project(pid) NOT NULL,
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
 totalamount INT NOT NULL,
-date TIMESTAMP NOT NULL);
+date TIMESTAMP NOT NULL,
+PRIMARY KEY (pid, uname));
 
 CREATE TABLE Usrlikeproject(
-pid BIGINT REFERENCES Project(pid) NOT NULL,
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL);
+pid INT REFERENCES Project(pid) NOT NULL,
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
+PRIMARY KEY (pid, uname));
 
 CREATE TABLE Follow(
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
-following VARCHAR(45) REFERENCES Usr(uname) NOT NULL);
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
+following VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
+PRIMARY KEY (uname, uname));
 
 CREATE TABLE Comment(
-pid BIGINT REFERENCES Project(pid) NOT NULL,
-uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
+pid INT REFERENCES Project(pid) NOT NULL,
+uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
 date TIMESTAMP NOT NULL,
-content VARCHAR(500) NOT NULL);
+content VARCHAR(500) NOT NULL,
+PRIMARY KEY (pid, uname, date));
 
 CREATE TABLE Request(
 pid BIGINT REFERENCES Project(pid) NOT NULL,
 uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
 min INT NOT NULL,
 max INT NOT NULL,
-endtime TIMESTAMP NOT NULL);
+endtime TIMESTAMP NOT NULL,
+PRIMARY KEY (pid, uname, endtime));
 
 CREATE TABLE Rate(
 pid BIGINT REFERENCES Project(pid) NOT NULL,
 uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
 ratenumber INT NOT NULL,
-CHECK (ratenumber BETWEEN 1 AND 10))
+CHECK (ratenumber BETWEEN 1 AND 5),
+PRIMARY KEY (pid, uname));
