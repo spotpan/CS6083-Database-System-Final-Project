@@ -1,4 +1,4 @@
-User(uname, uloginname, upassword)
+Usr(uname, uloginname, upassword)
 
 Userinfo(uname, uemail, uhometown, uinterests, ucreditcard)
 
