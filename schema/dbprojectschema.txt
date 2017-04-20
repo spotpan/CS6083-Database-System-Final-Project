@@ -2,7 +2,7 @@ Usr(uname, uloginname, upassword)
 
 Usrinfo(uname, uemail, uhometown, uinterests, ucreditcard)
 
-Project(pid, uname, pname, pdescription, status, tags, createdtime, plannedtime)
+Project(pid, uname, pname, pdescription, status, tag, createdtime, plannedtime)
 
 Projectattachment(pid, blob)
 
