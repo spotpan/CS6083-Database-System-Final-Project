@@ -1,6 +1,6 @@
 Usr(uname, uloginname, upassword)
 
-Userinfo(uname, uemail, uhometown, uinterests, ucreditcard)
+Usrinfo(uname, uemail, uhometown, uinterests, ucreditcard)
 
 Project(pid, uname, pname, pdescription, status, tags, plannedtime)
 
@@ -10,12 +10,12 @@ Pledge(pid, uname, amount, date)
 
 Charge(pid, uname, totalamount, date)
 
-Like(pid, uname)
+Usrlikeproject(pid, uname)
 
 Follow(uname, following)
 
 Comment(pid, uname, date, content)
 
-Request(uname, pid, min, max, endtime)
+Request(pid, uname, min, max, endtime)
 
 Rate(pid, uname, ratenumber)
