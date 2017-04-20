@@ -53,7 +53,7 @@ PRIMARY KEY (pid, uname));
 CREATE TABLE Follow(
 uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
 following VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
-PRIMARY KEY (uname, uname));
+PRIMARY KEY (uname, following));
 
 CREATE TABLE Comment(
 pid INT REFERENCES Project(pid) NOT NULL,
