@@ -13,12 +13,40 @@ WHERE P.pid = C.pid AND P.tag = 'Jazz'
 GROUP BY C.uname
 ORDER BY sum;
 
-iv.(not finished)
-SELECT COUNT(*), P.uname
-FROM Project AS P
-WHERE P.status = 'completed'
-GROUP BY P.uname       
-HAVING COUNT(*) >= 3;
+iv.
+CREATE VIEW countcompleted AS 
+SELECT uname, COUNT(pid) AS cnt
+FROM Project
+WHERE status = 'completed'
+GROUP BY uname
+HAVING COUNT(pid) >= 3;
+
+CREATE VIEW completedpid AS SELECT P.pid, P.uname
+FROM countcompleted AS CC, Project AS P
+WHERE P.uname = CC.uname
+AND P.status = 'completed';
+
+CREATE VIEW completedratepid AS SELECT R.ratenumber, R.uname, R.pid
+FROM completedpid AS CP, Rate AS R
+WHERE CP.pid = R.pid;
+
+CREATE VIEW completedratepidsponsor AS SELECT CC.*
+FROM completedratepid AS CC, Charge as C
+WHERE CC.uname = C.uname
+AND CC.pid = C.pid;
+
+CREATE VIEW avgratesponsor AS SELECT AVG(ratenumber), pid  
+FROM completedratepidsponsor
+GROUP BY pid
+HAVING AVG(ratenumber) >= 4;
+
+SELECT name FROM (
+SELECT COUNT(*), CP.uname AS name
+FROM completedpid AS CP, avgratesponsor as ARS
+WHERE CP.pid = ARS.pid GROUP BY CP.uname
+HAVING COUNT(*) IN (SELECT cnt     
+FROM countcompleted AS CC
+WHERE CC.uname = CP.uname)) AS U;
 
 v.
 WITH followedby_Bob(following) AS (SELECT following from follow where uname = 'BobInBrooklyn') SELECT C.* from followedby_Bob AS FB, Comment AS C Where C.uname = FB.following;
