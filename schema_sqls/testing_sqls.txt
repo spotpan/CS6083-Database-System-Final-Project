@@ -1,0 +1,26 @@
+i.
+INSERT INTO Usr VALUES('Jack2016', 'Jack2016', 'jzd1209');
+
+ii.
+SELECT pname FROM Project WHERE LOWER(tag) LIKE 'jazz' AND status = 'processing';
+
+iii.
+
+iv.(not finished)
+SELECT COUNT(*), P.uname
+FROM Project AS P
+WHERE P.status = 'completed'
+GROUP BY P.uname       
+HAVING COUNT(*) >= 3;
+
+v.
+WITH followedby_Bob(following) AS (SELECT following from follow where uname = 'BobInBrooklyn') SELECT C.* from followedby_Bob AS FB, Comment AS C Where C.uname = FB.following;
+
+vi.
+INSERT INTO Project VALUES(100011, 'Jack2016', 'Smooth, Smooth Jazz', 'We are a group of theater students at W University in the midst of putting on the first ever production of the play, "Smooth, Smooth Jazz". It is a dark comedy in 2 acts, written by Teague Parker and Directed by Alyssa Balogh. The cast, crew, director, and playwright are all current students. This play was awarded the Kennedy Center American College Theatre Festival Region 7 award for best play.', 'processing', 'Jazz', '2016-05-21', '2017-05-21 20:00:00');
+
+vii.
+INSERT INTO Pledge VALUES(100011, 'AlexLexington', 30, '2017-04-10 18:15:00');
+
+viii.
+
