@@ -1,14 +1,17 @@
 CREATE TABLE Usr(
 uname VARCHAR(40) PRIMARY KEY NOT NULL, 
 uloginname VARCHAR(40) UNIQUE NOT NULL,
-upassowrd VARCHAR(40) NOT NULL);
+upassowrd VARCHAR(40) NOT NULL,
+CHECK (char_length(uname) >= 6 AND char_length(uname) <= 40),
+CHECK (char_length(uloginname) >= 6 AND char_length(uloginname) <= 40));
 
 CREATE TABLE Usrinfo(
 uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
 uemail VARCHAR(40) UNIQUE NOT NULL,
 uhometown VARCHAR(40),
 uinterests VARCHAR(40),
-ucreditcard BIGINT);
+ucreditcard BIGINT,
+CHECK (ucreditcard <= 9999999999999999));
 
 //ucreditcard 16 length
 
@@ -65,7 +68,6 @@ PRIMARY KEY (pid, uname, date));
 CREATE TABLE Request(
 pid BIGINT REFERENCES Project(pid) NOT NULL,
 uname VARCHAR(45) REFERENCES Usr(uname) NOT NULL,
-min INT NOT NULL,
 max INT NOT NULL,
 endtime TIMESTAMP NOT NULL,
 PRIMARY KEY (pid, uname, endtime));
