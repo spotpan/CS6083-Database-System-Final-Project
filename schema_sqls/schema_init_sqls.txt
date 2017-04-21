@@ -18,7 +18,7 @@ uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
 pname VARCHAR(40) NOT NULL,
 pdescrption VARCHAR(500),
 status VARCHAR(40) NOT NULL,
-tags VARCHAR(40) NOT NULL,
+tag VARCHAR(40) NOT NULL,
 createdtime DATE NOT NULL,
 plannedtime TIMESTAMP NOT NULL);
 
