@@ -32,7 +32,8 @@ plannedtime TIMESTAMP NOT NULL);
 
 CREATE TABLE Projectattachment(
 pid INT REFERENCES Project(pid) NOT NULL,
-blob BYTEA PRIMARY KEY NOT NULL);
+blob BYTEA NOT NULL,
+PRIMARY KEY(pid, blob));
 
 CREATE TABLE Pledge(
 pid INT REFERENCES Project(pid) NOT NULL,

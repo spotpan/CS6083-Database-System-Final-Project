@@ -2,9 +2,16 @@ i.
 INSERT INTO Usr VALUES('Jack2016', 'Jack2016', 'jzd1209');
 
 ii.
-SELECT pname FROM Project WHERE LOWER(tag) LIKE 'jazz' AND status = 'processing';
+SELECT pname FROM Project AS P, Request AS R WHERE LOWER(tag) LIKE 'jazz' AND status = 'processing' AND P.pid = R.pid
+ORDER BY R.endtime DESC;
+
 
 iii.
+SELECT C.uname as uname, SUM(C.totalamount) as sum
+FROM Charge as C, Project as P
+WHERE P.pid = C.pid AND P.tag = 'Jazz'
+GROUP BY C.uname
+ORDER BY sum;
 
 iv.(not finished)
 SELECT COUNT(*), P.uname
