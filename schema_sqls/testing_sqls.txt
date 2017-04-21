@@ -58,4 +58,68 @@ vii.
 INSERT INTO Pledge VALUES(100011, 'AlexLexington', 30, '2017-04-10 18:15:00');
 
 viii.
+CREATE OR REPLACE FUNCTION project_status_changes()
+RETURNS trigger AS  
+$$  
+BEGIN  
+IF ((SELECT SUM(p.amount)
+FROM Pledge AS P, Project AS PR
+WHERE P.pid = NEW.pid
+AND PR.status = 'processing') >=( 
+SELECT R.max 
+FROM Request AS R
+WHERE R.pid = NEW.pid))
+THEN UPDATE Project
+SET status = 'completed'
+WHERE pid = NEW.pid;
+RETURN NEW;
+END IF;
+END;  
+$$  
+LANGUAGE 'plpgsql';  
+
+CREATE trigger FoundDetect
+AFTER INSERT
+ON Pledge
+FOR EACH ROW 
+EXECUTE PROCEDURE project_status_changes();
+
+CREATE OR REPLACE FUNCTION charge_changes()
+RETURNS trigger AS  
+$$  
+BEGIN  
+IF (OLD.status != new.status
+AND NEW.status = 'completed')
+THEN INSERT INTO Charge(pid, uname, totalamount, d)
+(SELECT pid, uname, SUM(amount) AS totalamount, localtimestamp AS d
+FROM Pledge AS P
+WHERE P.pid = NEW.pid
+GROUP BY P.uname, P.pid);
+RETURN NEW;
+END IF;
+END;  
+$$  
+LANGUAGE 'plpgsql'; 
+
+CREATE trigger CompleteCharge
+BEFORE UPDATE
+ON Project
+FOR EACH ROW 
+EXECUTE PROCEDURE charge_changes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
