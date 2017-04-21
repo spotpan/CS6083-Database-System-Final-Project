@@ -16,6 +16,6 @@ Follow(uname, following)
 
 Comment(pid, uname, date, content)
 
-Request(pid, uname, min, max, endtime)
+Request(pid, uname, max, endtime)
 
 Rate(pid, uname, ratenumber)
