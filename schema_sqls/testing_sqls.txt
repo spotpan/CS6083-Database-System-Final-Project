@@ -107,19 +107,14 @@ ON Project
 FOR EACH ROW 
 EXECUTE PROCEDURE charge_changes();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Past endtime and return back to status = ‘not-started’ trigger:
+create event timer
+on schedule every 10 second
+on completion preserve enable
+do
+begin
+update project as p, request as r
+set p.status = 'not-started'
+where p.pid = r.pid and r.endtime - now() < 0
+end;
 
