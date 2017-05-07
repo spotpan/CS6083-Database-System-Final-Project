@@ -3,7 +3,8 @@ uname VARCHAR(40) PRIMARY KEY NOT NULL,
 uloginname VARCHAR(40) UNIQUE NOT NULL,
 upassowrd VARCHAR(40) NOT NULL,
 CHECK (char_length(uname) >= 6 AND char_length(uname) <= 40),
-CHECK (char_length(uloginname) >= 6 AND char_length(uloginname) <= 40));
+CHECK (char_length(uloginname) >= 6 AND char_length(uloginname) <= 40),
+CHECK (char_length(upassword) >= 6 AND char_length(upassword) <= 40));
 
 CREATE TABLE Usrinfo(
 uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
