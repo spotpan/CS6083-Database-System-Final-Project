@@ -1,6 +1,10 @@
 body {
     background: #2c3e50;
+    text-decoration-color: #ecf0f1;
+    color: #ecf0f1;
 }
+
+
 
 #regbar {
     height: 67px;
@@ -50,4 +54,9 @@ a:hover {
 
 fieldset {
     border: none;
+}
+
+p {
+    color: #ecf0f1;
+    text-decoration: none;
 }

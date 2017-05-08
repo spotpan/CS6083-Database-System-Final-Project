@@ -13,27 +13,27 @@
     <div id="regbar">
     <h2><a href="#" id="loginform">Login</a> | <a href="#" id="registerform">Register</a></h2>
     <div id="login">
-        <form>
+        <form name='loginform' action="login.php" method="POST" target="_blank">
             Login Name:<br>
-            <input type="text" name="loginname" >
+            <input type="text" name="loginname" />
             <br>
             Password:<br>
-            <input type="text" name="password">
+            <input type="text" name="password" />
             <br><br>
             <input type="submit" value="Log in" style="font-size:10pt;color:white;background-color:green;border:2px solid #336600;padding:3px">
         </form>
     </div>
     <div id="register">
-        <form>
+        <form name='registerform' action="register.php" method="POST" target="_blank">
             User Name (at least 6 characters):<br>
-            <input type="text" name="r_uname" >
+            <input type="text" name="r_uname" />
             <br>
             Login Name (at least 6 characters):<br>
-            <input type="text" name="r_loginname" >
+            <input type="text" name="r_loginname" />
             <br>
             Password (at least 6 characters):<br>
-            <input type="text" name="r_password">
-            <br>
+            <input type="text" name="r_password" />
+            <br><br>
             <input type="submit" value="Register" style="font-size:10pt;color:white;background-color:green;border:2px solid #336600;padding:3px">
         </form>
 
