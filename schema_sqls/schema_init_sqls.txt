@@ -51,9 +51,10 @@ date TIMESTAMP NOT NULL,
 PRIMARY KEY (pid, uname));
 
 CREATE TABLE Usrlikeproject(
-pid INT REFERENCES Project(pid) NOT NULL,
-uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
-PRIMARY KEY (pid, uname));
+  pid INT REFERENCES Project(pid) NOT NULL,
+  uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
+  commenttime TIMESTAMP NOT NULL,
+  PRIMARY KEY (pid, uname));
 
 CREATE TABLE Follow(
 uname VARCHAR(40) REFERENCES Usr(uname) NOT NULL,
