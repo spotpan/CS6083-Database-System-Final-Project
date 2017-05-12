@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Project!</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<!-- Project(pid, uname, pname, pdescription, status, tag, createdtime, plannedtime) -->
+<body>
+<h2><a href="homepage.php">Home</a></h2>
+<h3 style="margin-left: 5%">Create a NEW project:</h3>
+<form style="margin-left: 5%" action="createproj.php" method="post">
+    Project name:<br>
+    <input type="text" name="pname"><br>
+    Description: <br>
+    <input type="text" name="pdescription"><br>
+    Tag: <br>
+    <input type="text" name="tag"><br>
+    Planned Time: ("YYYY-MM-DD") <br>
+    <input type="text" name="plannedtime"><br>
+    <label>Image upload</label>
+    <input type="file" name="attachment"><br>
+    <input type="submit" value="Create">
+</form>
+</body>
+</html>

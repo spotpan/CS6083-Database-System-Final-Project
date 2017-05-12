@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
+<body>
 <?php
 /**
  * Created by PhpStorm.
@@ -18,22 +19,30 @@
 	$loginname = pg_escape_string($_POST['loginname']);
 	$password = pg_escape_string($_POST['password']);
 
-	//$_SESSION ['cname'] = $cname;
-    $query_usr = "SELECT uname FROM usr WHERE uloginname = '$loginname' AND upassword = '$password'";
-    $result = pg_query($query_usr);
+
+//    $queryUsr = "SELECT uname FROM usr WHERE uloginname = '$loginname' AND upassword = '$password'";
+    $result = pg_prepare($db, "queryUsr", "SELECT uname FROM usr WHERE uloginname = $1 AND upassword = $2");
+    $result = pg_execute($db, "queryUsr", array($loginname, $password));
 
     if(pg_num_rows($result) != 1){
-        echo "<p style='color: azure '>", "Wrong login name or password: ", $loginname, "!", '</p><br>';
+        echo "<p style='color: azure'>", htmlspecialchars("Wrong login name or password: ", $loginname, "!", '</p><br>');
         $previous = "javascript:history.go(-1)";
         if(isset($_SERVER['HTTP_REFERER'])) {
             $previous = $_SERVER['HTTP_REFERER'];
         }
 ?>
-<a href="<?= $previous ?>">Back</a>
+
+<a href="<?= $previous ?>" style="font-size:10pt;color:white;background-color:green;border:2px solid #336600;padding:3px">Back</a>
+
 <?php
     } else {
-        echo "<p style='color: azure '>Welcome, ", $loginname, "!", '</p><br>';
+        $myrow = pg_fetch_assoc($result);
+        $_SESSION ['uname'] = $myrow['uname'];
+        echo htmlspecialchars("<p style='color: azure'>Welcome, ", $loginname, "!", '</p><br>');
+        sleep(3);
+        header("Location: homepage.php");
     }
 
 ?>
 </html>
+</body>

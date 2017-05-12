@@ -4,8 +4,6 @@ body {
     color: #ecf0f1;
 }
 
-
-
 #regbar {
     height: 67px;
     background: #34495e;
@@ -24,6 +22,9 @@ h1 {
 }
 
 h2 {
+    font-family: Tahoma;
+    font-size: x-large;
+    color: cyan;
     padding: 10px;
     margin-left: 5%;
 }
@@ -56,7 +57,7 @@ fieldset {
     border: none;
 }
 
-p {
+body.p {
     color: #ecf0f1;
     text-decoration: none;
 }
