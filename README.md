@@ -4,5 +4,5 @@ This is the repository of CS6083 Database System Final Project. Our project uses
 
 CONTACT
 
-Zunchen Huang zh946@nyu.edu 
+Phoebus Huang zh946@nyu.edu 
 Hongcheng Chen hc1981@nyu.edu 
